@@ -10,12 +10,8 @@ export const Login =(props)=>{
     const [errors,setError] = useState({})
    
     const handleSubmit = (e) => {
-        
         e.preventDefault();
-       
         setError(validateLogin(email,pass));
-       
-
     }
     useEffect(()=>{
         if(Object.keys(errors).length ===0 && email!=="" && pass!=""){
