@@ -3,17 +3,21 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom";
 import {validateLogin} from "./Validation";
 import { Navigate } from "react-router-dom";
+import { useContext } from 'react';
+import UserContext from './UserContext';
 export const Login =(props)=>{
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [pass ,setPass] = useState('');
     const [errors,setError] = useState({})
+    const { setUser } = useContext(UserContext);
    
     const handleSubmit = (e) => {
         e.preventDefault();
         setError(validateLogin(email,pass));
     }
     useEffect(()=>{
+        
         if(Object.keys(errors).length ===0 && email!=="" && pass!=""){
             
            axios.get('http://localhost:3001/findUser',{
@@ -31,7 +35,8 @@ export const Login =(props)=>{
                 setError(err)
             }
             else{
-                navigate("/Home",{state : {name : response.data.name}}) ;
+            setUser(response.data.name);
+                navigate("/Home") ;
             }
             
           });

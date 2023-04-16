@@ -1,16 +1,19 @@
 import React, {useEffect, useState} from "react"
+import { useContext } from 'react';
 
+import UserContext from './UserContext';
 import { useLocation } from "react-router-dom";
 import Navbar from "./Navbar"
 
 
 function Home(){
-    const {state} = useLocation();
-    const name = state.name;
+  
+    const { user } = useContext(UserContext);
+   
     return(
         <>
-        <Navbar name={name} />
-      <h2> Welcome {name} !</h2>
+        <Navbar  />
+      <h2> Welcome {user} !</h2>
       </>
     )
 }

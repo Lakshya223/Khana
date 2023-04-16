@@ -8,11 +8,16 @@ import  Inventory from "./Inventory";
 import  Third_party  from "./Third-party";
 import Home from './Home';
 import Recipe from './Recipe';
+import UserContext from './UserContext';
+
 function App() {
+  const [user, setUser] = useState(null);
   
   return (
+    
     <div className="App">
       <BrowserRouter>
+      <UserContext.Provider value={{ user, setUser }}>
       <Routes>
         <Route exact path="/" element={<Login/>}/>
         <Route exact path="/Home" element={<Home/>}/>
@@ -21,6 +26,7 @@ function App() {
         <Route exact path="/Home/Inventory" element={<Inventory/>}/>
         <Route exact path="/Home/Third-party" element={<Third_party/>}/>
       </Routes>
+      </UserContext.Provider>
       </BrowserRouter>
     
     </div>

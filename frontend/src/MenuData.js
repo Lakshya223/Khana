@@ -16,10 +16,5 @@ export const MenuData = [
         cName : "nav-links",
         icon : "fa-solid fa-user-group "
     },
-    {
-        title : "User",
-        url : "/Home",
-        cName : "nav-links",
-        icon : "fa-solid fa-user "
-    },
+   
 ]
