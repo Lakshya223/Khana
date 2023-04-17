@@ -9,11 +9,12 @@ import Navbar from "./Navbar"
 function Home(){
   
     const { user } = useContext(UserContext);
+    const {type} = useContext(UserContext);
    
     return(
         <>
         <Navbar  />
-      <h2> Welcome {user} !</h2>
+      <h2> Welcome {user} you are {type} !</h2>
       </>
     )
 }

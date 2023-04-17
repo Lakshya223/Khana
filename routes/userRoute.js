@@ -6,10 +6,12 @@ router.route("/register").post((req,res)=> {
     const name =req.body.name;
     const email = req.body.email;
     const pass= req.body.pass;
+    const type = req.body.type;
     const newUser = new User({
         name,
         email,
-        pass
+        pass,
+        type
     });
      newUser.save();
 

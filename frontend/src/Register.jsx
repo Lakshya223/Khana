@@ -8,25 +8,28 @@ export const Register =(props)=>{
     const [pass ,setPass] = useState('');
     const [name ,setName] = useState('');
     const [cPass ,setCPass] = useState('');
+    const [type ,setType] = useState('');
     const navigate = useNavigate();
     const [errors,setError] = useState({})
        const handleSubmit = (e) => {
         e.preventDefault();
     
-        setError(validateRegister(name, email,pass,cPass ));
+        setError(validateRegister(name, email,pass,cPass,type ));
 
        
   
     }
     useEffect(()=>{
-        if(Object.keys(errors).length ===0 && email!=="" && pass!="" && name!="" && cPass!=""){
-        alert("Registered Successful");
+        if(Object.keys(errors).length ===0 && email!=="" && pass!="" && name!="" && cPass!="" && type!=""){
+        
         const newUser = {
             name : name,
             email: email,
-            pass : pass
+            pass : pass,
+            type: type
         }
         axios.post('http://localhost:3001/register',newUser);
+        alert("Registered Successful");
         navigate("/");
         }
     },[errors])
@@ -45,6 +48,13 @@ export const Register =(props)=>{
             {errors.pass && <p>{errors.pass}</p>}
             <label htmlFor ="confirmPassword">confirm password</label>
             <input value = {cPass} onChange = {(e)=> setCPass(e.target.value)} type = "password" placeholder="******" id ="cPassword" name="cPassword" />
+            <label htmlFor="type" > you would use HelpChef for ? </label>
+            <select value= {type} onChange={(e)=>setType(e.target.value)} placeholder="choose one" id="type" name="type" >
+            <option disabled={true} value=""> --Choose and option--</option>
+                <option value="personal"> Personal</option>
+                <option value = "business" > Business</option>
+            </select>
+            {errors.type && <p>{errors.type}</p>}
             {errors.cPass && <p>{errors.cPass}</p>}
            
             {errors.check && <p>{errors.check}</p>}

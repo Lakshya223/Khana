@@ -8,7 +8,7 @@ export const validateLogin = (email,pass ) => {
     }
     return errors;
 }
-export const validateRegister = (name, email,pass,cPass ) => {
+export const validateRegister = (name, email,pass,cPass,type ) => {
     let errors ={}
     if(!email){
         errors.email = "Email Required"
@@ -25,6 +25,9 @@ export const validateRegister = (name, email,pass,cPass ) => {
     if(pass!=cPass)
     {
         errors.check= "password mismatch"
+    }
+    if(!type){
+        errors.type = "Please choose and option"
     }
     return errors;
 }

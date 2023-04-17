@@ -7,17 +7,12 @@ import UserContext from './UserContext';
 class Navbar extends Component{
     static contextType = UserContext
     state = {clicked :false };
-    
-
-
-
     handleClick = () =>{
         this.setState({
             clicked:!this.state.clicked
         })
     }
-   
-    render(){
+   render(){
         const { user } = this.context;
 
     // Create a new object with the additional structure

@@ -11,6 +11,7 @@ export const Login =(props)=>{
     const [pass ,setPass] = useState('');
     const [errors,setError] = useState({})
     const { setUser } = useContext(UserContext);
+    const {setType} = useContext(UserContext);
    
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -36,6 +37,7 @@ export const Login =(props)=>{
             }
             else{
             setUser(response.data.name);
+            setType(response.data.type);
                 navigate("/Home") ;
             }
             
