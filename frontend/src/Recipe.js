@@ -5,22 +5,32 @@ import Navbar from "./Navbar"
 import { useContext } from 'react';
 import UserContext from './UserContext';
 import Typewriter from 'typewriter-effect';
+import axios from "axios";
 
 
 
 function Recipe(){
   const { user } = useContext(UserContext);
-    return(
+  const {recipeText} = useContext(UserContext);
+  const {setRecipeText}=useContext(UserContext);
+
+  useEffect(()=>{
+      axios.get("http://localhost:3002/getRecipe").then(function(response){
+        setRecipeText(response.data)
+      });
+ 
+  })  ;
+  
+  return(
         <div className="recipe">
           <Navbar />
         <div className="recipe-body">
         
         <h2>{user}'s Recipe</h2>
+      
         <Typewriter 
           onInit={(typewriter)=>{
-            typewriter.typeString(
-              "This is the recipe"
-              ).start();
+            typewriter.typeString(recipeText).start();
 
           }}
           cursor="_"

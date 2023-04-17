@@ -13,12 +13,13 @@ import UserContext from './UserContext';
 function App() {
   const [user, setUser] = useState(null);
   const [type,setType] = useState(null);
+  const [recipeText,setRecipeText] = useState(null);
   
   return (
     
     <div className="App">
       <BrowserRouter>
-      <UserContext.Provider value={{ user, setUser,type,setType }}>
+      <UserContext.Provider value={{ user, setUser,type,setType,recipeText,setRecipeText }}>
       <Routes>
         <Route exact path="/" element={<Login/>}/>
         <Route exact path="/Home" element={<Home/>}/>
