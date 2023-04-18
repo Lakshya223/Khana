@@ -13,7 +13,7 @@ function Recipe(){
   const { user } = useContext(UserContext);
   const {recipeText} = useContext(UserContext);
   const {setRecipeText}=useContext(UserContext);
-
+  console.log(recipeText)
   useEffect(()=>{
       axios.get("http://localhost:3002/getRecipe").then(function(response){
         setRecipeText(response.data)

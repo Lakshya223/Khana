@@ -14,12 +14,13 @@ function App() {
   const [user, setUser] = useState(null);
   const [type,setType] = useState(null);
   const [recipeText,setRecipeText] = useState(null);
+  const [inventoryItems,setInventoryItems] = useState(null);
   
   return (
     
     <div className="App">
       <BrowserRouter>
-      <UserContext.Provider value={{ user, setUser,type,setType,recipeText,setRecipeText }}>
+      <UserContext.Provider value={{ user, setUser,type,setType,recipeText,setRecipeText,inventoryItems,setInventoryItems }}>
       <Routes>
         <Route exact path="/" element={<Login/>}/>
         <Route exact path="/Home" element={<Home/>}/>
