@@ -16,11 +16,22 @@ function Inventory(){
   const[items,setItems] = useState('');
   const itemFetchedRef = useRef(false)
   
+  
+  const allItems = {
+    apple: 0,
+    banana: 0,
+    orange: 0,
+    // add more items as needed
+  };
+  
 
   useEffect(()=>{
     if (itemFetchedRef.current) return;
       itemFetchedRef.current = true;
     axios.get("http://localhost:3001/getItems",{params : {name : user}}).then(function(response){
+      const itemsReceived = response.data.items;
+      const updatedItems = { ...allItems, ...itemsReceived };
+    
       setInventoryItems(response.data)
       setItems(inventoryItems.items);
       
