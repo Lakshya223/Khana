@@ -5,6 +5,7 @@ import Navbar from "./Navbar"
 import { useContext } from 'react';
 import UserContext from './UserContext';
 import axios from "axios";
+import PersonalPage from "./PersonalPage";
 
 
 function Inventory(){
@@ -70,7 +71,7 @@ function Inventory(){
       ) : (
         // Render personal-specific content here
         <>
-         
+         <PersonalPage />
           <table>
             <thead>
               <tr>
