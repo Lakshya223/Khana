@@ -1,52 +1,56 @@
-import React, {useEffect, useRef, useState} from "react"
+import React, { useEffect, useRef, useState } from 'react';
 
-import { useLocation } from "react-router-dom";
-import Navbar from "./Navbar"
+import Navbar from '../components/Navbar';
 import { useContext } from 'react';
-import UserContext from './UserContext';
-import axios from "axios";
-import PersonalPage from "./PersonalPage";
+import UserContext from '../UserContext';
+import axios from 'axios';
+import PersonalPage from './PersonalPage';
+import BusinessPage from './BusinessPage';
 
-
-function Inventory(){
-  const { user, type, inventoryItems, setInventoryItems } = useContext(UserContext);
+function Inventory() {
+  const { user, type, setInventoryItems, setThirdPartyItems} = useContext(
+    UserContext
+  );
   const [items, setItems] = useState({});
   const itemFetchedRef = useRef(false);
-
-  const allItems = {
-    apple: 0,
-    banana: 0,
-    orange: 0,
-    // add more items as needed
-  };
 
   useEffect(() => {
     if (itemFetchedRef.current) return;
     itemFetchedRef.current = true;
 
-    axios.get("http://localhost:3001/getItems", { params: { name: user } })
+    const allItems = {
+      tomato: 0,
+      potato: 0,
+      carrot: 0,
+      cucumber : 0,
+      lemon:0
+      // add more items as needed
+    };
+
+    axios
+      .get('http://localhost:3001/getItems', { params: { name: user } })
       .then(function (response) {
         const itemsReceived = response.data.items;
         const updatedItems = { ...allItems, ...itemsReceived };
-        setInventoryItems(response.data);
+        setInventoryItems(itemsReceived);
+        console.log(itemsReceived)
         setItems(updatedItems);
+        setThirdPartyItems(updatedItems);
       })
       .catch(function (error) {
-        console.error("Error fetching items:", error);
+        console.error('Error fetching items:', error);
       });
-
   }, []);
-  // const items = inventoryItems.items;
-  // console.log(inventoryItems);
 
-    return(
-        <div className="inventoryS">
-        <Navbar />
-      <h2> {user}'s Inventory !</h2><br/>
+  return (
+    <div className='inventoryS'>
+      <Navbar />
+      <h2>{user}'s Inventory!</h2>
+      <br />
       {type === 'business' ? (
         // Render business-specific content here
         <>
-         
+        <BusinessPage/>
           <table>
             <thead>
               <tr>
@@ -67,7 +71,7 @@ function Inventory(){
       ) : (
         // Render personal-specific content here
         <>
-         <PersonalPage />
+          <PersonalPage />
           <table>
             <thead>
               <tr>
@@ -86,8 +90,8 @@ function Inventory(){
           </table>
         </>
       )}
-      </div>
-    )
+    </div>
+  );
 }
 
 export default Inventory;

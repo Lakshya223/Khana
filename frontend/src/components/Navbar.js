@@ -1,9 +1,9 @@
 import { Component } from "react";
 import { MenuData } from "./MenuData";
-import "./NavbarStyles.css"
+import "../styles/NavbarStyles.css"
 import { Link } from "react-router-dom";
-import { useContext } from 'react';
-import UserContext from './UserContext';
+
+import UserContext from '../UserContext';
 class Navbar extends Component{
     static contextType = UserContext
     state = {clicked :false };

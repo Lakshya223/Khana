@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
-import {validateLogin} from "./Validation";
-import { Navigate } from "react-router-dom";
+import {validateLogin} from "../components/Validation";
+
 import { useContext } from 'react';
-import UserContext from './UserContext';
+import UserContext from '../UserContext';
 export const Login =(props)=>{
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
@@ -19,7 +19,7 @@ export const Login =(props)=>{
     }
     useEffect(()=>{
         
-        if(Object.keys(errors).length ===0 && email!=="" && pass!=""){
+        if(Object.keys(errors).length ===0 && email!=="" && pass!==""){
             
            axios.get('http://localhost:3001/findUser',{
             params : { email: email}}).then(function (response) {

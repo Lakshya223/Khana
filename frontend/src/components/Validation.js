@@ -22,7 +22,7 @@ export const validateRegister = (name, email,pass,cPass,type ) => {
     if(!cPass){
         errors.cPass = "Confirm Password Required"
     }
-    if(pass!=cPass)
+    if(pass!==cPass)
     {
         errors.check= "password mismatch"
     }

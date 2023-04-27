@@ -61,11 +61,16 @@ button {
   text-decoration: underline;
 }
 
-.recipe-body{
-  height: 30rem;
-  width: 95rem;
+.recipe-items{
+ 
   background-color: #222;
   box-shadow: 0 5px 15px rgba(0,0,0,0.25);
   border-radius: 13px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 120px;
+  justify-content: center;
+  text-align: justify;
+  color: white;
 }
 

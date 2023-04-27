@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from "react"
 import axios from "axios"
-import {validateRegister} from "./Validation";
-import { Navigate } from "react-router-dom";
+import {validateRegister} from "../components/Validation";
+
 import { useNavigate } from "react-router-dom";
 export const Register =(props)=>{
      const [email, setEmail] = useState('');
@@ -20,7 +20,7 @@ export const Register =(props)=>{
   
     }
     useEffect(()=>{
-        if(Object.keys(errors).length ===0 && email!=="" && pass!="" && name!="" && cPass!="" && type!=""){
+        if(Object.keys(errors).length ===0 && email!=="" && pass!=="" && name!=="" && cPass!=="" && type!==""){
         
         const newUser = {
             name : name,
