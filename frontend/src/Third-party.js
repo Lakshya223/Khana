@@ -9,7 +9,7 @@ import UserContext from './UserContext';
 function Third_party(){
   
   
-  const {inventoryItems} = useContext(UserContext);
+  const {inventoryItems,third_party_items} = useContext(UserContext);
  
   const [itemsToOrder, setItemsToOrder] = useState([]);
   const itemFetchedRef = useRef(false)
@@ -21,8 +21,8 @@ function Third_party(){
       itemFetchedRef.current = true;
     const threshold = 5;
     const itemsToOrder = [];
-    console.log(inventoryItems.items)
-    for (const [itemName, itemQuantity] of Object.entries(inventoryItems.items)) {
+    
+    for (const [itemName, itemQuantity] of Object.entries(third_party_items)) {
       const quantityNeeded = threshold - itemQuantity;
       if (quantityNeeded > 0) {
         itemsToOrder.push({
@@ -35,7 +35,7 @@ function Third_party(){
   
     setItemsToOrder(itemsToOrder);
 
-},[inventoryItems.items])  ;
+},[third_party_items])  ;
 
 
 

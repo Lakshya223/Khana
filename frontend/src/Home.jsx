@@ -14,7 +14,7 @@ function Home(){
     return(
         <>
         <Navbar  />
-      <h2> Welcome {user} you are {type} !</h2>
+      <h2> Welcome {user}  !</h2>
       </>
     )
 }

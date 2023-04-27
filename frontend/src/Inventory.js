@@ -9,40 +9,36 @@ import PersonalPage from "./PersonalPage";
 
 
 function Inventory(){
-  const { user } = useContext(UserContext);
-  const {type} = useContext(UserContext);
-  const {inventoryItems} = useContext(UserContext);
-  const { setInventoryItems} = useContext(UserContext);
-  const[item,setItem] = useState('');
-  const[items,setItems] = useState('');
-  const itemFetchedRef = useRef(false)
-  
-  
+  const { user, type, inventoryItems, setInventoryItems } = useContext(UserContext);
+  const [items, setItems] = useState({});
+  const itemFetchedRef = useRef(false);
+
   const allItems = {
     apple: 0,
     banana: 0,
     orange: 0,
     // add more items as needed
   };
-  
 
-  useEffect(()=>{
+  useEffect(() => {
     if (itemFetchedRef.current) return;
-      itemFetchedRef.current = true;
-    axios.get("http://localhost:3001/getItems",{params : {name : user}}).then(function(response){
-      const itemsReceived = response.data.items;
-      const updatedItems = { ...allItems, ...itemsReceived };
-    
-      setInventoryItems(response.data)
-      setItems(inventoryItems.items);
-      
-  
-    });
-  
+    itemFetchedRef.current = true;
+
+    axios.get("http://localhost:3001/getItems", { params: { name: user } })
+      .then(function (response) {
+        const itemsReceived = response.data.items;
+        const updatedItems = { ...allItems, ...itemsReceived };
+        setInventoryItems(response.data);
+        setItems(updatedItems);
+      })
+      .catch(function (error) {
+        console.error("Error fetching items:", error);
+      });
+
+  }, []);
   // const items = inventoryItems.items;
   // console.log(inventoryItems);
 
-})  ;
     return(
         <div className="inventoryS">
         <Navbar />

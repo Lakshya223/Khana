@@ -14,14 +14,15 @@ function App() {
   const [user, setUser] = useState(null);
   const [type,setType] = useState(null);
   const [recipeText,setRecipeText] = useState(null);
-  const [inventoryItems,setInventoryItems] = useState(null);
+  const [inventoryItems,setInventoryItems] = useState([]);
+  const [third_party_items,setThird_party_items]= useState([]);
   
   
   return (
     
     <div className="App">
       <BrowserRouter>
-      <UserContext.Provider value={{ user, setUser,type,setType,recipeText,setRecipeText,inventoryItems,setInventoryItems}}>
+      <UserContext.Provider value={{ user, setUser,type,setType,recipeText,setRecipeText,inventoryItems,setInventoryItems,third_party_items,setThird_party_items}}>
       <Routes>
         <Route exact path="/" element={<Login/>}/>
         <Route exact path="/Home" element={<Home/>}/>
