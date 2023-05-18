@@ -21,7 +21,7 @@ function Recipe() {
       type: type,
       items : inventoryItems
   }
-    axios.post('http://172.20.10.4:5000/api/getRecipe',newUser).then(response => {
+    axios.post('http://127.0.0.1:5000/api/getRecipe',newUser).then(response => {
       // const data = JSON.parse(response);
      
       const data = response.data

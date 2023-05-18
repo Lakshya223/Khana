@@ -23,7 +23,11 @@ function Inventory() {
       potato: 0,
       carrot: 0,
       cucumber : 0,
-      lemon:0
+      lemon:0,
+      onion:0,
+      garlic:0,
+      orange: 0 ,
+      lady_finger:0,
       // add more items as needed
     };
 

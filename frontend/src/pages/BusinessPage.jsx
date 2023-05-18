@@ -11,7 +11,7 @@ function BusinessPage() {
   const {user} = useContext(UserContext);
   const {type} = useContext(UserContext);
   const Req = {
-    user:user,
+    name:user,
     type: type
   
   }
@@ -25,7 +25,7 @@ function BusinessPage() {
     
      
       
-      axios.post('http://172.20.10.4:5000/api/test',Req)
+      axios.post('http://192.168.167.109:5000/api/test',Req)
         .then(() => {
           setIsLoading(false);
           navigate("/Home/Inventory") 

@@ -23,11 +23,11 @@ function PersonalPage() {
     reader.onload = () => {
       const base64Image = reader.result.replace(/^data:image\/(.*);base64,/, '');
       const fileReq = {
-        user:user,
+        name:user,
         type: type,
         base64Image: base64Image
       }
-      axios.post('http://10.20.23.246:5000/api/test',fileReq)
+      axios.post('http://127.0.0.1:5000/api/test',fileReq)
         .then(() => {
           setIsLoading(false);
         })

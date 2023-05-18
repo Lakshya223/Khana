@@ -53,7 +53,7 @@ export const Login =(props)=>{
         <form className="login-form" onSubmit={handleSubmit}>
             <label htmlFor ="email">email</label>
             <input value = {email} onChange={(e)=>setEmail(e.target.value)} type  = "email" placeholder="email@gmail.com" id ="email" name="email" />
-            {errors.name && <p>{errors.name}</p>}
+            {errors.name && <p>{errors.name}</p>}   
             
             <label htmlFor ="password">password</label>
             <input value = {pass} onChange = {(e)=> setPass(e.target.value)} type = "password" placeholder="******" id ="password" name="password" />
